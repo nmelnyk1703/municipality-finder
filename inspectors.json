@@ -1,0 +1,834 @@
+{
+  "columbus|any": [
+    {
+      "label": "City/Village of Columbus",
+      "type": "any",
+      "inspector": "Dion",
+      "phones": [
+        "608-697-3737"
+      ],
+      "notes": ""
+    }
+  ],
+  "edgerton|city": [
+    {
+      "label": "City of Edgerton",
+      "type": "city",
+      "inspector": "David Geraths",
+      "phones": [
+        "608-697-7776"
+      ],
+      "notes": "wiinspections@safebuilt.com"
+    }
+  ],
+  "fitchburg|city": [
+    {
+      "label": "City of Fitchburg",
+      "type": "city",
+      "inspector": "Paul",
+      "phones": [
+        "608-270-4241 - text"
+      ],
+      "notes": "Approach inspections Zach Trzebiaowski 608-206-4263"
+    },
+    {
+      "label": "City of Fitchburg",
+      "type": "city",
+      "inspector": "text Paul",
+      "phones": [
+        "608-216-8038"
+      ],
+      "notes": "Approach inspections Zach Trzebiaowski 608-206-4263"
+    }
+  ],
+  "lake mills|city": [
+    {
+      "label": "City of Lake Mills",
+      "type": "city",
+      "inspector": "Greg Noll",
+      "phones": [
+        "920-675-9062",
+        "office 920-648-2344"
+      ],
+      "notes": ""
+    }
+  ],
+  "lodi|city": [
+    {
+      "label": "City of Lodi",
+      "type": "city",
+      "inspector": "Scott Jelle",
+      "phones": [
+        "608-963-0652"
+      ],
+      "notes": "totalinspectionservices@gmail.com"
+    }
+  ],
+  "madison|city": [
+    {
+      "label": "City of Madison",
+      "type": "city",
+      "inspector": "1-608-266-4551 - building inspections",
+      "phones": [
+        "Hottmann Construction Team site (City of Madison Inspection cheat sheet)",
+        "266-4551 - building inspection"
+      ],
+      "notes": "Engineering jledden@cityofmadison.com - wmcglynn@cityofmadison.com Bill McGlynn 608-266-4537 / Jason Leden 608-520-2433"
+    }
+  ],
+  "middleton|city": [
+    {
+      "label": "City of Middleton",
+      "type": "city",
+      "inspector": "",
+      "phones": [
+        "821-8370"
+      ],
+      "notes": ""
+    }
+  ],
+  "monona|city": [
+    {
+      "label": "City of Monona",
+      "type": "city",
+      "inspector": "Dave Martinson",
+      "phones": [
+        "222-2525",
+        "608-617-1464"
+      ],
+      "notes": "T-Thur. P.M. MONONA 222-2525"
+    }
+  ],
+  "portage|city": [
+    {
+      "label": "City of Portage",
+      "type": "city",
+      "inspector": "Jason Doro",
+      "phones": [
+        "608-617-2039"
+      ],
+      "notes": ""
+    }
+  ],
+  "stoughton|city": [
+    {
+      "label": "City of Stoughton",
+      "type": "city",
+      "inspector": "Steve Kittleson",
+      "phones": [
+        "608-445-9715"
+      ],
+      "notes": "inspects before backfilling /skittelson@cityofstoughton.com"
+    }
+  ],
+  "sun prairie|city": [
+    {
+      "label": "City of Sun Prairie",
+      "type": "city",
+      "inspector": "email buildinginspection@cityofsunprairie.com",
+      "phones": [
+        "825-1184",
+        "Doug 575-8192"
+      ],
+      "notes": "Dennis 608-575-8142 / Approach inspections - Clint Christenson 608-825-0862"
+    }
+  ],
+  "verona|city": [
+    {
+      "label": "City of Verona",
+      "type": "city",
+      "inspector": "Fax 845-8613",
+      "phones": [
+        "608-845-6495",
+        "todd.parkos@ci.veropna.wi.us"
+      ],
+      "notes": ""
+    }
+  ],
+  "waterloo|city": [
+    {
+      "label": "Ctiy of Waterloo",
+      "type": "city",
+      "inspector": "Chris Butschke",
+      "phones": [
+        "262-420-4732",
+        "608-576-6371"
+      ],
+      "notes": "wiinspections@safebuilt.com"
+    }
+  ],
+  "waukesha|city": [
+    {
+      "label": "City of Waukesha",
+      "type": "city",
+      "inspector": "",
+      "phones": [
+        "1-262-524-3530",
+        "call before foundation pour"
+      ],
+      "notes": ""
+    }
+  ],
+  "wisconsin dells|city": [
+    {
+      "label": "City of Wisconsin Dells",
+      "type": "city",
+      "inspector": "",
+      "phones": [
+        "608-253-2542"
+      ],
+      "notes": ""
+    }
+  ],
+  "springdale|town": [
+    {
+      "label": "Springdale Township",
+      "type": "town",
+      "inspector": "Tracy Johnson",
+      "phones": [
+        "608-459-8800"
+      ],
+      "notes": "johnsoninspection@gmail.com"
+    },
+    {
+      "label": "Town of Springdale",
+      "type": "town",
+      "inspector": "Tracy Johnson",
+      "phones": [
+        "608-459-8800"
+      ],
+      "notes": "before backfilling /johnsoninspection@gmail.com"
+    }
+  ],
+  "albion|town": [
+    {
+      "label": "Town of Albion",
+      "type": "town",
+      "inspector": "Steve Kittleson",
+      "phones": [
+        "608-445-9715"
+      ],
+      "notes": ""
+    }
+  ],
+  "arena|town": [
+    {
+      "label": "Town of Arena",
+      "type": "town",
+      "inspector": "Tracy Johnson",
+      "phones": [
+        "608-459-8800"
+      ],
+      "notes": ""
+    }
+  ],
+  "arlington|town": [
+    {
+      "label": "Town of Arlington",
+      "type": "town",
+      "inspector": "Kelly Green",
+      "phones": [
+        "608-697-7771"
+      ],
+      "notes": "johnsoninspection@gmail.com"
+    }
+  ],
+  "black earth|town": [
+    {
+      "label": "Town of Black Earth",
+      "type": "town",
+      "inspector": "Tracy Johnson",
+      "phones": [
+        "608-459-8800"
+      ],
+      "notes": "johnsoninspection@gmail.com"
+    }
+  ],
+  "blooming grove|town": [
+    {
+      "label": "Town of Blooming Grove",
+      "type": "town",
+      "inspector": "safe built",
+      "phones": [
+        "262-420-4732"
+      ],
+      "notes": "wiinspections@safebuilt.com"
+    }
+  ],
+  "blue mounds|town": [
+    {
+      "label": "Town of Blue Mounds",
+      "type": "town",
+      "inspector": "Scott Jelle",
+      "phones": [
+        "608-963-0652"
+      ],
+      "notes": "totalinspectionservices@gmail.com"
+    }
+  ],
+  "brigham|town": [
+    {
+      "label": "Town of Brigham",
+      "type": "town",
+      "inspector": "Scott Jelle",
+      "phones": [
+        "608-963-0652"
+      ],
+      "notes": "totalinspectionservices@gmail.com"
+    }
+  ],
+  "bristol|town": [
+    {
+      "label": "Town of Bristol",
+      "type": "town",
+      "inspector": "Kelly Green",
+      "phones": [
+        "608-697-7771"
+      ],
+      "notes": "Jerry Derr Town Chairman 608-575-3407 Don’t call unless urgent"
+    }
+  ],
+  "brooklyn|any": [
+    {
+      "label": "Brooklyn",
+      "type": "any",
+      "inspector": "David Geraths",
+      "phones": [
+        "608-697-7776"
+      ],
+      "notes": ""
+    }
+  ],
+  "burke|town": [
+    {
+      "label": "Town of Burke",
+      "type": "town",
+      "inspector": "Chris Butschke",
+      "phones": [
+        "262-420-4732",
+        "608-576-6371"
+      ],
+      "notes": "wiinspections@safebuilt.com"
+    }
+  ],
+  "caledonia|town": [
+    {
+      "label": "Town of Caledonia",
+      "type": "town",
+      "inspector": "Aaron Holbach",
+      "phones": [
+        "608-617-3566"
+      ],
+      "notes": ""
+    }
+  ],
+  "cottage grove|town": [
+    {
+      "label": "Town of Cottage Grove",
+      "type": "town",
+      "inspector": "Jim Trebian",
+      "phones": [
+        "608-697-7779"
+      ],
+      "notes": ""
+    }
+  ],
+  "cross plains|town": [
+    {
+      "label": "Town of Cross Plains",
+      "type": "town",
+      "inspector": "Tracy Johnson",
+      "phones": [
+        "608-459-8800"
+      ],
+      "notes": ""
+    }
+  ],
+  "dunkirk|town": [
+    {
+      "label": "Town of Dunkirk",
+      "type": "town",
+      "inspector": "Steve Kittleson",
+      "phones": [
+        "608-445-9715"
+      ],
+      "notes": "sckitt@hotmail.com"
+    }
+  ],
+  "dunn|town": [
+    {
+      "label": "Town of Dunn",
+      "type": "town",
+      "inspector": "Kelsey Shepperd",
+      "phones": [
+        "838-1081 ext 201",
+        "after walls are poured and before backfilling"
+      ],
+      "notes": "KShepperd@town.dunn.wi.us"
+    }
+  ],
+  "exeter|town": [
+    {
+      "label": "Town of Exeter",
+      "type": "town",
+      "inspector": "Brian Flannery",
+      "phones": [
+        "608-558-1833",
+        "before backfilling"
+      ],
+      "notes": "brianflannery@outlook.com"
+    }
+  ],
+  "harmony grove|town": [
+    {
+      "label": "Town of Harmony Grove",
+      "type": "town",
+      "inspector": "Dave Bieno",
+      "phones": [
+        "608-617-9869"
+      ],
+      "notes": ""
+    }
+  ],
+  "mazomanie|town": [
+    {
+      "label": "Town of Mazomanie",
+      "type": "town",
+      "inspector": "Tracy Johnson",
+      "phones": [
+        "608-459-8800"
+      ],
+      "notes": "johnsoninspection@gmail.com"
+    }
+  ],
+  "lake mills|town": [
+    {
+      "label": "Town of Lake Mills",
+      "type": "town",
+      "inspector": "Chris Butschke",
+      "phones": [
+        "262-420-4732",
+        "576-6371"
+      ],
+      "notes": "wiinspections@safebuilt.com"
+    }
+  ],
+  "lodi|town": [
+    {
+      "label": "Town of Lodi",
+      "type": "town",
+      "inspector": "Dave Bieno",
+      "phones": [
+        "608-617-9869"
+      ],
+      "notes": ""
+    }
+  ],
+  "madison|town": [
+    {
+      "label": "Town of Madison",
+      "type": "town",
+      "inspector": "",
+      "phones": [
+        "210-7261"
+      ],
+      "notes": ""
+    }
+  ],
+  "merrimac|town": [
+    {
+      "label": "Town of Merrimac",
+      "type": "town",
+      "inspector": "Dave Bieno",
+      "phones": [
+        "608-617-9869"
+      ],
+      "notes": ""
+    }
+  ],
+  "middleton|town": [
+    {
+      "label": "Town of Middleton",
+      "type": "town",
+      "inspector": "608-459-8800 for inspections",
+      "phones": [
+        "1-608-459-8800",
+        "johnsoninspection@gmail.com"
+      ],
+      "notes": "Do not call with vapor barrior inspections / before backfilling Approch inspections jmon@vierbicher.com - Jacquelyn Monfils 608-821-3979"
+    }
+  ],
+  "oregon|town": [
+    {
+      "label": "Town of Oregon",
+      "type": "town",
+      "inspector": "safe built",
+      "phones": [
+        "262-420-4732",
+        "576-1434"
+      ],
+      "notes": "wiinspections@safebuilt.com"
+    }
+  ],
+  "pleasant springs|town": [
+    {
+      "label": "Town of Pleasant Springs",
+      "type": "town",
+      "inspector": "Steve Kittleson",
+      "phones": [
+        "608-445-9715"
+      ],
+      "notes": "Call Steve when they strip the wall /skitt@hotmail.com"
+    }
+  ],
+  "prairie du sac|town": [
+    {
+      "label": "Town of Prairie Du Sac",
+      "type": "town",
+      "inspector": "Tracy Johnson",
+      "phones": [
+        "608-459-8800"
+      ],
+      "notes": "johnsoninspection@gmail.com"
+    }
+  ],
+  "primrose|town": [
+    {
+      "label": "Town of Primrose",
+      "type": "town",
+      "inspector": "Todd Parkos",
+      "phones": [
+        "1-608-516-1251"
+      ],
+      "notes": ""
+    }
+  ],
+  "rutland|town": [
+    {
+      "label": "Town of Rutland",
+      "type": "town",
+      "inspector": "Steve Kittleson",
+      "phones": [
+        "608-445-9715"
+      ],
+      "notes": "stkitt@hotmail.com"
+    }
+  ],
+  "springfield|town": [
+    {
+      "label": "Town of Springfield",
+      "type": "town",
+      "inspector": "safe built",
+      "phones": [
+        "262-420-4732",
+        "Ben 608-259-6860"
+      ],
+      "notes": "wiinspections@safebuilt.com / commercial inspector Roger 414-639-6314"
+    }
+  ],
+  "sumpter|town": [
+    {
+      "label": "Town of Sumpter",
+      "type": "town",
+      "inspector": "Tracy Johnson",
+      "phones": [
+        "608-459-8800"
+      ],
+      "notes": "johnsoninspection@gmail.com"
+    }
+  ],
+  "sun prairie|town": [
+    {
+      "label": "Town of Sun Prairie",
+      "type": "town",
+      "inspector": "Chris Butschke",
+      "phones": [
+        "1-608-688-0997",
+        "576-6371"
+      ],
+      "notes": ""
+    }
+  ],
+  "vermont|town": [
+    {
+      "label": "Town of Vermont",
+      "type": "town",
+      "inspector": "Tracy Johnson",
+      "phones": [
+        "608-459-8800"
+      ],
+      "notes": "johnsoninspection@gmail.com"
+    }
+  ],
+  "verona|town": [
+    {
+      "label": "Town of Verona",
+      "type": "town",
+      "inspector": "Jon Crook",
+      "phones": [
+        "444-4894"
+      ],
+      "notes": "Text Jon for inspections. Will inspect walls before backfilling"
+    }
+  ],
+  "west point|town": [
+    {
+      "label": "Town of West Point",
+      "type": "town",
+      "inspector": "Stephanie Potter",
+      "phones": [
+        "608-671-5691"
+      ],
+      "notes": "spotter@msa-ps.com"
+    }
+  ],
+  "west port|town": [
+    {
+      "label": "Town of West Port",
+      "type": "town",
+      "inspector": "Mark Jankowski/* Dave Beano",
+      "phones": [
+        "697-7777 / *608-671-9869",
+        "849-5613"
+      ],
+      "notes": "leave message on office phone / walls before backfilling unlee additional rebar needed or on bigger homes"
+    }
+  ],
+  "windsor|town": [
+    {
+      "label": "Town of Windsor",
+      "type": "town",
+      "inspector": "Kelly",
+      "phones": [
+        "697-7771"
+      ],
+      "notes": "Jake 697-8009"
+    }
+  ],
+  "black earth|village": [
+    {
+      "label": "Village of Black Earth",
+      "type": "village",
+      "inspector": "Tracy Johnson",
+      "phones": [
+        "608-459-8800"
+      ],
+      "notes": "johnsoninspection@gmail.com / before backfilling"
+    }
+  ],
+  "blue mounds|village": [
+    {
+      "label": "Village of Blue Mounds",
+      "type": "village",
+      "inspector": "Chuck Jones",
+      "phones": [
+        "608-437-5197",
+        "Chuck 225-7131"
+      ],
+      "notes": "village of Blue Mounds office"
+    }
+  ],
+  "brooklyn|village": [
+    {
+      "label": "Village of Brooklyn",
+      "type": "village",
+      "inspector": "David Geraths",
+      "phones": [
+        "697-7776"
+      ],
+      "notes": ""
+    }
+  ],
+  "cottage grove|village": [
+    {
+      "label": "Village of Cottage Grove",
+      "type": "village",
+      "inspector": "Jim Trebian",
+      "phones": [
+        "697-7779"
+      ],
+      "notes": ""
+    }
+  ],
+  "cross plains|village": [
+    {
+      "label": "Village of Cross Plains",
+      "type": "village",
+      "inspector": "Tracy Johnson",
+      "phones": [
+        "608-459-8800",
+        "444-0372"
+      ],
+      "notes": "no vapor barrier"
+    }
+  ],
+  "deerfield|village": [
+    {
+      "label": "Village of Deerfield",
+      "type": "village",
+      "inspector": "Independent Chris",
+      "phones": [
+        "262-420-4732",
+        "576-6371"
+      ],
+      "notes": ""
+    }
+  ],
+  "deforest|village": [
+    {
+      "label": "Village of DeForest",
+      "type": "village",
+      "inspector": "Kelly Green",
+      "phones": [
+        "697-7771"
+      ],
+      "notes": "Jake Tuesday & Thursday 697-8009 / Kevin 697-7775"
+    }
+  ],
+  "lodi|village": [
+    {
+      "label": "Village of Lodi",
+      "type": "village",
+      "inspector": "Scott Jelle",
+      "phones": [
+        "963-0652"
+      ],
+      "notes": "before backfilling"
+    }
+  ],
+  "lake delton|village": [
+    {
+      "label": "Village of Lake Delton",
+      "type": "village",
+      "inspector": "Kelli Mason",
+      "phones": [
+        "608-553-1599"
+      ],
+      "notes": ""
+    }
+  ],
+  "maple bluff|village": [
+    {
+      "label": "Village of Maple Bluff",
+      "type": "village",
+      "inspector": "Kelly Green",
+      "phones": [
+        "697-7771"
+      ],
+      "notes": ""
+    }
+  ],
+  "marshall|village": [
+    {
+      "label": "Village of Marshall",
+      "type": "village",
+      "inspector": "Chris Butschke",
+      "phones": [
+        "262-420-4732",
+        "608-576-6371"
+      ],
+      "notes": "wiinspections@safebuilt.com"
+    }
+  ],
+  "mazomanie|village": [
+    {
+      "label": "Village of Mazomanie",
+      "type": "village",
+      "inspector": "Tracy Johnson",
+      "phones": [
+        "444-0372"
+      ],
+      "notes": "johnsoninspection@gmail.com"
+    }
+  ],
+  "mcfarland|village": [
+    {
+      "label": "Village of McFarland",
+      "type": "village",
+      "inspector": "Jim Trebian",
+      "phones": [
+        "838-3154",
+        "697-7779"
+      ],
+      "notes": "IF THERE IS NO REBAR IN FOUNDATION INSPECTION CAN BE DONE BEFORE BACKFILLING"
+    }
+  ],
+  "merrimac|village": [
+    {
+      "label": "Village of Merrimac",
+      "type": "village",
+      "inspector": "Dave Bieno",
+      "phones": [
+        "608-617-9869"
+      ],
+      "notes": ""
+    }
+  ],
+  "mount horeb|village": [
+    {
+      "label": "Village of Mt Horeb",
+      "type": "village",
+      "inspector": "Chris Michaels",
+      "phones": [
+        "608-617-9632"
+      ],
+      "notes": "M-W-F inspections"
+    }
+  ],
+  "new glarus|village": [
+    {
+      "label": "Village of New Glarus",
+      "type": "village",
+      "inspector": "Scott Jelle",
+      "phones": [
+        "608-963-0652"
+      ],
+      "notes": "totalinspectionservices@gmail.com"
+    }
+  ],
+  "oregon|village": [
+    {
+      "label": "Village of Oregon",
+      "type": "village",
+      "inspector": "Dave Hendricks",
+      "phones": [
+        "262-202-2173"
+      ],
+      "notes": "Do not pour concrete without inspector seeing jobsite / wiinspections@safebuilt.com"
+    }
+  ],
+  "shorewood|village": [
+    {
+      "label": "Village of Shorewood",
+      "type": "village",
+      "inspector": "Dave Martinson",
+      "phones": [
+        "608-617-1464"
+      ],
+      "notes": "inspects before wall are poured / Approach inspection Mike Meier 608-209-5024"
+    }
+  ],
+  "sussex/menomonee falls|village": [
+    {
+      "label": "Village of Sussex/Menomonee Falls",
+      "type": "village",
+      "inspector": "Beth Klahn",
+      "phones": [
+        "262-532-4282"
+      ],
+      "notes": "city engineering Chris Garropy 1-262-532-4411"
+    }
+  ],
+  "waunakee|village": [
+    {
+      "label": "Village of Waunakee",
+      "type": "village",
+      "inspector": "Dave Beano",
+      "phones": [
+        "849-5613/inspect@waunakee.com",
+        "Dave Beano 608-617-9869"
+      ],
+      "notes": "leave message on office phone / walls before backfilling unlee additional rebar needed or on bigger homes"
+    }
+  ]
+}

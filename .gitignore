@@ -43,3 +43,6 @@ __pycache__/
 .env
 .venv/
 venv/
+
+### Inspector source (contains personal contact info) ###
+data/*.xls

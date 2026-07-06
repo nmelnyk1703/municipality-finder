@@ -68,6 +68,14 @@ PAGE = """<!doctype html>
   .bar > span { display:block; height:100%; background:var(--accent); }
   .reason { margin-top:14px; font-size:14px; color:#334155;
             background:#f8fafc; border-radius:8px; padding:10px 12px; }
+  .insp { margin-top:8px; font-size:14px; color:#0f172a;
+          background:#ecfdf5; border:1px solid #a7f3d0; border-radius:8px;
+          padding:8px 12px; }
+  .insp-label { display:inline-block; font-size:11px; font-weight:700;
+                text-transform:uppercase; letter-spacing:.04em; color:var(--ok);
+                margin-right:6px; }
+  .insp-none { background:#f8fafc; border-color:var(--line); color:#94a3b8; }
+  .insp-notes { color:#475569; font-size:13px; margin-top:3px; }
   .err { color:#b91c1c; background:#fef2f2; border:1px solid #fecaca;
          border-radius:8px; padding:12px; }
 </style>
@@ -125,6 +133,7 @@ function render(d) {
   html += '<div class="meta">' +
           (d.matched_address ? esc(d.matched_address) + ' · ' : '') +
           d.coordinates.lat.toFixed(5) + ', ' + d.coordinates.lon.toFixed(5) + '</div>';
+  html += inspectorHtml(p.inspectors);
   const ns = d.neighbors_within_3mi || [];
   if (ns.length) {
     html += '<div class="neigh"><h3>Other municipalities within 3 miles</h3><ul>';
@@ -134,12 +143,28 @@ function render(d) {
               ' <span style="color:#94a3b8">(~' + n.approx_miles + ' mi)</span></span>' +
               '<span>' + (nc != null ? Math.round(nc) + '%' : '') + '</span></li>';
       if (nc != null) html += '<div class="bar"><span style="width:' + nc + '%"></span></div>';
+      html += inspectorHtml(n.inspectors);
     }
     html += '</ul></div>';
   }
   if (c.reasoning) html += '<div class="reason">' + esc(c.reasoning) + '</div>';
   html += '</div>';
   return html;
+}
+function inspectorHtml(list) {
+  if (!list || !list.length) {
+    return '<div class="insp insp-none">Inspector: none on file</div>';
+  }
+  let out = '';
+  for (const ins of list) {
+    const head = [ins.inspector, (ins.phones || []).join(' / ')]
+                   .filter(Boolean).map(esc).join('  ·  ');
+    out += '<div class="insp"><span class="insp-label">Inspector</span> ' +
+           (head || '(see notes)');
+    if (ins.notes) out += '<div class="insp-notes">' + esc(ins.notes) + '</div>';
+    out += '</div>';
+  }
+  return out;
 }
 function esc(s){return String(s).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));}
 ['address','coords'].forEach(id=>document.getElementById(id)

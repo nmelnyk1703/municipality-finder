@@ -59,6 +59,22 @@ Other municipalities within 3 miles:
   • Middleton town  (~2.0 mi)   confidence 10%
 ```
 
+## Building inspectors
+
+Each result also shows the **building inspector** assigned to that municipality
+(name, phone, notes), sourced from a coworker-provided list. The lookup matches
+on municipality name **and** type, so *City of Madison* and *Town of Madison* get
+their own inspectors.
+
+- Data lives in `inspectors.json` (loaded at runtime).
+- To regenerate it from an updated `.xls`:
+  ```bash
+  python3 -m pip install xlrd
+  python3 build_inspectors.py   # reads data/Inspector List.xls -> inspectors.json
+  ```
+- The raw `.xls` is git-ignored (it contains personal contact info). Keep the
+  GitHub repo **private** since the list includes personal phone numbers/emails.
+
 ## Notes / limits
 
 - **Coverage:** United States (Census data). Best-tested for Wisconsin.

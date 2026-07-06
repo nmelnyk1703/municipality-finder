@@ -40,6 +40,7 @@ import argparse
 import json
 import math
 import os
+import re
 import sys
 import time
 import urllib.parse
@@ -217,6 +218,35 @@ def _classify(name: str) -> tuple[str, str]:
         if lowered.lower().endswith(" " + suffix):
             return lowered[: -(len(suffix) + 1)].strip(), suffix
     return lowered, "municipality"
+
+
+_INSPECTORS_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                "inspectors.json")
+try:
+    with open(_INSPECTORS_PATH, encoding="utf-8") as _fh:
+        _INSPECTORS: dict = json.load(_fh)
+except (OSError, ValueError):
+    _INSPECTORS = {}
+
+
+def _normalize_muni(name: str) -> str:
+    """Match key normalization -- must mirror build_inspectors.normalize()."""
+    n = name.strip().lower().replace(".", "")
+    n = re.sub(r"\s+", " ", n)
+    n = re.sub(r"^mt ", "mount ", n)
+    n = re.sub(r"^st ", "saint ", n)
+    n = n.replace("mc farland", "mcfarland").replace("de forest", "deforest")
+    return n
+
+
+def find_inspector(name: str, muni_type: str) -> list[dict]:
+    """Return inspector record(s) for a municipality name + type, or []."""
+    base = _normalize_muni(name)
+    # Try the exact type first, then bare/"any" entries that match any type.
+    for key in (f"{base}|{muni_type}", f"{base}|any"):
+        if key in _INSPECTORS:
+            return _INSPECTORS[key]
+    return []
 
 
 def extract_municipality(geographies: dict) -> dict | None:
@@ -441,7 +471,11 @@ def find_municipality(address: str | None, lat: float | None,
             "No municipality found for this location (it may be in an "
             "unincorporated area outside any Census county subdivision).")
 
+    primary["inspectors"] = find_inspector(primary["name"], primary["type"])
+
     neighbors = find_neighbors(lat, lon, primary["name"])
+    for n in neighbors:
+        n["inspectors"] = find_inspector(n["name"], n["type"])
 
     location_desc = matched_address or f"{lat:.5f}, {lon:.5f}"
     claude_result = claude_confidence(primary, neighbors, location_desc)
@@ -467,6 +501,24 @@ def find_municipality(address: str | None, lat: float | None,
 # Presentation
 # --------------------------------------------------------------------------- #
 
+def _render_inspectors(inspectors: list[dict] | None, indent: str = "") -> list[str]:
+    """Format inspector record(s) for terminal output."""
+    if not inspectors:
+        return [f"{indent}Inspector: (none on file)"]
+    out = []
+    for ins in inspectors:
+        parts = []
+        if ins.get("inspector"):
+            parts.append(ins["inspector"])
+        if ins.get("phones"):
+            parts.append(" / ".join(ins["phones"]))
+        out.append(f"{indent}Inspector: " + "  ·  ".join(parts) if parts
+                   else f"{indent}Inspector: (see notes)")
+        if ins.get("notes"):
+            out.append(f"{indent}           {ins['notes']}")
+    return out
+
+
 def render(result: dict) -> str:
     p = result["primary"]
     conf = result["confidence"]
@@ -486,6 +538,7 @@ def render(result: dict) -> str:
     lines.append(f"  → {p['name']} {p['type']}"
                  + (f"   [{loc}]" if loc else "")
                  + f"    confidence {conf['primary']:.0f}%")
+    lines.extend(_render_inspectors(p.get("inspectors"), indent="      "))
 
     neighbors = result["neighbors_within_3mi"]
     if neighbors:
@@ -496,6 +549,7 @@ def render(result: dict) -> str:
             nconf_str = f"confidence {nconf:.0f}%" if nconf is not None else ""
             lines.append(f"  • {n['name']} {n['type']}  "
                          f"(~{n['approx_miles']} mi)   {nconf_str}")
+            lines.extend(_render_inspectors(n.get("inspectors"), indent="      "))
     else:
         lines.append("")
         lines.append(f"No other municipality within {RADIUS_MILES:.0f} miles.")
