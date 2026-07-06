@@ -1,0 +1,3 @@
+# Only needed for AI-generated confidence reasoning (optional).
+# The app runs without it, using a built-in heuristic.
+anthropic>=0.40

@@ -1,0 +1,13 @@
+# Render Blueprint. In Render: New + > Blueprint, point it at this repo.
+# Or create a "Web Service" manually with the build/start commands below.
+services:
+  - type: web
+    name: municipality-finder
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python web_app.py
+    envVars:
+      # Set the actual value in the Render dashboard (do NOT commit it).
+      - key: ANTHROPIC_API_KEY
+        sync: false
