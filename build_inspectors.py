@@ -90,8 +90,13 @@ def main() -> None:
             "phones": phones,
             "notes": notes,
         }
-        key = f"{normalize(base)}|{mtype}"
-        records.setdefault(key, []).append(entry)
+        # A label may name more than one municipality, e.g.
+        # "Village of Sussex/Menomonee Falls" -> register both.
+        for part in base.split("/"):
+            part = part.strip()
+            if part:
+                key = f"{normalize(part)}|{mtype}"
+                records.setdefault(key, []).append(entry)
         count += 1
 
     with open(OUT, "w") as fh:

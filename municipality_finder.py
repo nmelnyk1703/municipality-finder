@@ -228,6 +228,20 @@ try:
 except (OSError, ValueError):
     _INSPECTORS = {}
 
+# Known differences between the Census municipality name and the inspector
+# list's spelling. Keys are the NORMALIZED Census name -> normalized list name.
+_MUNI_ALIASES = {
+    "shorewood hills": "shorewood",   # list says "Shorewood" (Dane County)
+}
+
+# Index that also carries a space-stripped variant of each key so that e.g.
+# Census "Westport" matches the list's "West Port".
+_INSPECTOR_INDEX: dict = {}
+for _key, _val in _INSPECTORS.items():
+    _base, _typ = _key.rsplit("|", 1)
+    _INSPECTOR_INDEX.setdefault(_key, _val)
+    _INSPECTOR_INDEX.setdefault(f"{_base.replace(' ', '')}|{_typ}", _val)
+
 
 def _normalize_muni(name: str) -> str:
     """Match key normalization -- must mirror build_inspectors.normalize()."""
@@ -242,10 +256,13 @@ def _normalize_muni(name: str) -> str:
 def find_inspector(name: str, muni_type: str) -> list[dict]:
     """Return inspector record(s) for a municipality name + type, or []."""
     base = _normalize_muni(name)
-    # Try the exact type first, then bare/"any" entries that match any type.
-    for key in (f"{base}|{muni_type}", f"{base}|any"):
-        if key in _INSPECTORS:
-            return _INSPECTORS[key]
+    base = _MUNI_ALIASES.get(base, base)
+    # Try, in order: exact name, then space-stripped name; and for each, the
+    # exact municipality type, then bare/"any" list entries.
+    for candidate in (base, base.replace(" ", "")):
+        for key in (f"{candidate}|{muni_type}", f"{candidate}|any"):
+            if key in _INSPECTOR_INDEX:
+                return _INSPECTOR_INDEX[key]
     return []
 
 

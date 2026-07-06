@@ -808,7 +808,18 @@
       "notes": "inspects before wall are poured / Approach inspection Mike Meier 608-209-5024"
     }
   ],
-  "sussex/menomonee falls|village": [
+  "sussex|village": [
+    {
+      "label": "Village of Sussex/Menomonee Falls",
+      "type": "village",
+      "inspector": "Beth Klahn",
+      "phones": [
+        "262-532-4282"
+      ],
+      "notes": "city engineering Chris Garropy 1-262-532-4411"
+    }
+  ],
+  "menomonee falls|village": [
     {
       "label": "Village of Sussex/Menomonee Falls",
       "type": "village",
