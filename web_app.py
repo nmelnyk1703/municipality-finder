@@ -118,6 +118,7 @@ function render(d) {
   const p = d.primary, c = d.confidence;
   const loc = [p.county, p.state].filter(Boolean).join(', ');
   let html = '<div class="result">';
+  if (d.note) html += '<div class="reason" style="background:#fffbeb;color:#92400e">⚠️ ' + esc(d.note) + '</div>';
   html += '<div class="primary">' + esc(p.name) + ' ' + esc(p.type) +
           '<span class="badge">' + Math.round(c.primary) + '% confidence</span></div>';
   if (loc) html += '<div class="meta">' + esc(loc) + '</div>';

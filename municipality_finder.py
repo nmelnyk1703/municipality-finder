@@ -53,6 +53,33 @@ CENSUS_BASE = "https://geocoding.geo.census.gov/geocoder"
 BENCHMARK = "Public_AR_Current"
 VINTAGE = "Current_Current"
 
+# This tool operates in Wisconsin (Cru Concrete). If an address doesn't name a
+# state, we assume Wisconsin so the geocoder doesn't wander off to a same-named
+# street in another state (e.g. "821 W Johnson St" -> Ray City, GA). Override
+# with the DEFAULT_STATE env var, or set it to "" to disable the assumption.
+DEFAULT_STATE = os.environ.get("DEFAULT_STATE", "WI")
+
+# US state names + abbreviations, used to detect whether an address already
+# names a state before we append the default.
+_US_STATES = {
+    "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID",
+    "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS",
+    "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK",
+    "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV",
+    "WI", "WY", "DC",
+}
+_US_STATE_NAMES = {
+    "alabama", "alaska", "arizona", "arkansas", "california", "colorado",
+    "connecticut", "delaware", "florida", "georgia", "hawaii", "idaho",
+    "illinois", "indiana", "iowa", "kansas", "kentucky", "louisiana", "maine",
+    "maryland", "massachusetts", "michigan", "minnesota", "mississippi",
+    "missouri", "montana", "nebraska", "nevada", "new hampshire", "new jersey",
+    "new mexico", "new york", "north carolina", "north dakota", "ohio",
+    "oklahoma", "oregon", "pennsylvania", "rhode island", "south carolina",
+    "south dakota", "tennessee", "texas", "utah", "vermont", "virginia",
+    "washington", "west virginia", "wisconsin", "wyoming",
+}
+
 # The Census layers that describe a "municipality". County Subdivisions holds
 # WI cities/villages/towns (MCDs); Incorporated Places is used as a fallback.
 MUNICIPALITY_LAYERS = ("County Subdivisions", "Incorporated Places")
@@ -125,10 +152,25 @@ def _get_json(url: str) -> dict:
     raise CensusError(f"Census request failed after {HTTP_RETRIES} tries: {last_err}")
 
 
+def _address_has_state(address: str) -> bool:
+    """True if the address text already names a US state (abbrev or full name)."""
+    lowered = address.lower()
+    if any(name in lowered for name in _US_STATE_NAMES):
+        return True
+    # Tokenize on commas/spaces and look for a 2-letter state abbreviation.
+    tokens = [t.strip(" ,.").upper() for t in address.replace(",", " ").split()]
+    return any(t in _US_STATES for t in tokens)
+
+
 def geocode_address(address: str) -> dict | None:
     """Forward-geocode a one-line address -> {lat, lon, matched_address}."""
+    query = address
+    assumed_state = None
+    if DEFAULT_STATE and not _address_has_state(address):
+        query = f"{address}, {DEFAULT_STATE}"
+        assumed_state = DEFAULT_STATE
     params = urllib.parse.urlencode({
-        "address": address,
+        "address": query,
         "benchmark": BENCHMARK,
         "format": "json",
     })
@@ -141,8 +183,9 @@ def geocode_address(address: str) -> dict | None:
     return {
         "lat": float(coords["y"]),
         "lon": float(coords["x"]),
-        "matched_address": best.get("matchedAddress", address),
+        "matched_address": best.get("matchedAddress", query),
         "num_matches": len(matches),
+        "assumed_state": assumed_state,
     }
 
 
@@ -369,6 +412,7 @@ def find_municipality(address: str | None, lat: float | None,
                       lon: float | None) -> dict:
     resolved_from = None
     matched_address = None
+    note = None
 
     if lat is not None and lon is not None:
         resolved_from = "coordinates"
@@ -377,10 +421,16 @@ def find_municipality(address: str | None, lat: float | None,
     elif address:
         geo = geocode_address(address)
         if not geo:
-            raise CensusError(f"Could not geocode address: {address!r}")
+            raise CensusError(
+                f"Could not geocode address: {address!r}. Try adding the city "
+                f"and state, e.g. '{address}, Madison, WI'.")
         lat, lon = geo["lat"], geo["lon"]
         matched_address = geo["matched_address"]
         resolved_from = "address"
+        if geo.get("assumed_state"):
+            note = (f"No state was given, so '{geo['assumed_state']}' was assumed. "
+                    f"Matched: {matched_address}. If that's the wrong place, add "
+                    f"the city/state to the address.")
     else:
         raise ValueError("Provide an address, coordinates, or both.")
 
@@ -409,6 +459,7 @@ def find_municipality(address: str | None, lat: float | None,
         "neighbors_within_3mi": neighbors,
         "confidence": conf,
         "confidence_source": conf_source,
+        "note": note,
     }
 
 
@@ -423,6 +474,8 @@ def render(result: dict) -> str:
     lines.append("=" * 60)
     lines.append("MUNICIPALITY RESULT")
     lines.append("=" * 60)
+    if result.get("note"):
+        lines.append(f"NOTE: {result['note']}")
     if result.get("matched_address"):
         lines.append(f"Matched address : {result['matched_address']}")
     c = result["coordinates"]
