@@ -61,6 +61,15 @@ def clean(s: str) -> str:
     return re.sub(r"\s+", " ", str(s).strip())
 
 
+def add_area_code(text: str) -> str:
+    """Prefix bare 7-digit local numbers (NNN-NNNN) with the 608 area code.
+
+    The list is all south-central Wisconsin (608). A negative lookbehind avoids
+    matching the last 7 digits of a full number like 608-845-6495.
+    """
+    return re.sub(r"(?<![\d-])(\d{3}-\d{4})(?!\d)", r"608-\1", text)
+
+
 def main() -> None:
     book = xlrd.open_workbook(SRC)
     sheet = book.sheet_by_index(0)
@@ -78,10 +87,10 @@ def main() -> None:
         name = cells[1] if len(cells) > 1 else ""
         phone = cells[2] if len(cells) > 2 else ""
         cell = cells[3] if len(cells) > 3 else ""
-        notes = " ".join(x for x in cells[4:] if x).strip()
+        notes = add_area_code(" ".join(x for x in cells[4:] if x).strip())
 
         # Combine the two phone columns; some rows use one, some the other.
-        phones = [p for p in (phone, cell) if p]
+        phones = [add_area_code(p) for p in (phone, cell) if p]
 
         entry = {
             "label": label,
